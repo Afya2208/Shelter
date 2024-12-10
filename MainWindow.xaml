@@ -1,0 +1,25 @@
+﻿<Window x:Class="Shelter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Shelter"
+        
+        mc:Ignorable="d"
+        
+        Icon="\Resources\иконка приложения.png"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Image HorizontalAlignment="Left" Source="\Resources\логотип приложения.png"></Image>
+        <Button x:Name="LoginBt" Click="LoginBt_Click" HorizontalAlignment="Right" Width="60" Height="60" Background="Transparent" BorderBrush="Transparent">
+            <Image Source="\Resources\login.png"></Image>
+        </Button>
+        <Frame ContentRendered="MainFrame_ContentRendered" Grid.Row="1" NavigationUIVisibility="Hidden" Name="MainFrame">
+            
+        </Frame>
+    </Grid>
+</Window>

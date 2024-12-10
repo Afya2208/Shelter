@@ -1,0 +1,1269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище ShelterModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Animal">
+          <Key>
+            <PropertyRef Name="AnimalId" />
+          </Key>
+          <Property Name="AnimalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="GenderCode" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="DateOfArrival" Type="datetime" Nullable="false" />
+          <Property Name="BreedId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Breed">
+          <Key>
+            <PropertyRef Name="BreedId" />
+          </Key>
+          <Property Name="BreedId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Synonym" Type="nvarchar" MaxLength="100" />
+          <Property Name="Code" Type="nchar" MaxLength="10" />
+          <Property Name="WFCStatusCode" Type="nvarchar" MaxLength="1" />
+          <Property Name="Group" Type="nvarchar" MaxLength="150" />
+          <Property Name="Section" Type="nvarchar" MaxLength="150" />
+          <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Variety" Type="nvarchar" MaxLength="100" />
+          <Property Name="StandartFCI" Type="int" />
+          <Property Name="RCF" Type="int" />
+          <Property Name="URLPhoto" Type="nvarchar" MaxLength="400" />
+          <Property Name="URLWiki" Type="nvarchar" MaxLength="400" />
+          <Property Name="YearOfRecognitionFCI" Type="int" />
+        </EntityType>
+        <EntityType Name="BreedStatistic">
+          <Key>
+            <PropertyRef Name="BreedId" />
+          </Key>
+          <Property Name="BreedId" Type="int" Nullable="false" />
+          <Property Name="Temperament" Type="tinyint" Nullable="false" />
+          <Property Name="Activity" Type="tinyint" Nullable="false" />
+          <Property Name="Training" Type="tinyint" Nullable="false" />
+          <Property Name="Longevity" Type="tinyint" Nullable="false" />
+          <Property Name="Height" Type="tinyint" Nullable="false" />
+          <Property Name="Care" Type="tinyint" Nullable="false" />
+          <Property Name="Children" Type="tinyint" Nullable="false" />
+          <Property Name="Apartment" Type="tinyint" Nullable="false" />
+          <Property Name="Guard" Type="tinyint" Nullable="false" />
+          <Property Name="Moult" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PostalZip" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Region" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="Phone2" Type="nvarchar" MaxLength="15" />
+          <Property Name="OtherContactInfo" Type="nvarchar" MaxLength="300" />
+          <Property Name="Serial" Type="nchar" MaxLength="4" />
+          <Property Name="Number" Type="nchar" MaxLength="6" />
+          <Property Name="IssuedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="DateOfIssue" Type="datetime" />
+          <Property Name="RegistrationAddress" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Donation">
+          <Key>
+            <PropertyRef Name="DonationId" />
+          </Key>
+          <Property Name="DonationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateOfDonation" Type="datetime" Nullable="false" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="FoodId" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Food">
+          <Key>
+            <PropertyRef Name="FoodId" />
+          </Key>
+          <Property Name="FoodId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="FoodClass" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsHistoricalReference" Type="bit" />
+          <Property Name="NdbNumber" Type="int" />
+          <Property Name="FoodCategory" Type="nvarchar" MaxLength="100" />
+          <Property Name="FdcId" Type="int" />
+          <Property Name="PublicationDate" Type="datetime" />
+          <Property Name="Scientificname" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="FoodAttribute">
+          <Key>
+            <PropertyRef Name="FoodAttributeId" />
+          </Key>
+          <Property Name="FoodAttributeId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="FoodAttributes">
+          <Key>
+            <PropertyRef Name="FoodId" />
+          </Key>
+          <Property Name="FoodId" Type="int" Nullable="false" />
+          <Property Name="FoodAttributeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FoodNutrientDerivation">
+          <Key>
+            <PropertyRef Name="FoodNutrientDerivationCode" />
+          </Key>
+          <Property Name="FoodNutrientDerivationCode" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" />
+          <Property Name="FoodNutrientSourceId" Type="int" />
+        </EntityType>
+        <EntityType Name="FoodNutrientSource">
+          <Key>
+            <PropertyRef Name="FoodNutrientSourceId" />
+          </Key>
+          <Property Name="FoodNutrientSourceId" Type="int" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="20" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="FoodPortion">
+          <Key>
+            <PropertyRef Name="FoodPortionId" />
+          </Key>
+          <Property Name="FoodPortionId" Type="int" Nullable="false" />
+          <Property Name="Value" Type="int" />
+          <Property Name="MeasureUnitName" Type="nvarchar" MaxLength="100" />
+          <Property Name="MeasureUnitAbbreviation" Type="nvarchar" MaxLength="100" />
+          <Property Name="Modifier" Type="nvarchar" MaxLength="100" />
+          <Property Name="GramWeight" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SequenceNumber" Type="int" />
+          <Property Name="MinYearAcquired" Type="int" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Shelter.dbo.FoodPortions" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="FoodPortions">
+          <Key>
+            <PropertyRef Name="FoodId" />
+            <PropertyRef Name="FoodPortionId" />
+          </Key>
+          <Property Name="FoodId" Type="int" Nullable="false" />
+          <Property Name="FoodPortionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="GenderCode" />
+          </Key>
+          <Property Name="GenderCode" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Shelter.dbo.InputFoods" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="InputFoods">
+          <Key>
+            <PropertyRef Name="FoodId" />
+            <PropertyRef Name="InputFoodId" />
+          </Key>
+          <Property Name="FoodId" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" />
+          <Property Name="InputFoodId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nutrient">
+          <Key>
+            <PropertyRef Name="NutrientId" />
+          </Key>
+          <Property Name="NutrientId" Type="int" Nullable="false" />
+          <Property Name="Number" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Rank" Type="int" />
+          <Property Name="UnitName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="NutrientConversionFactor">
+          <Key>
+            <PropertyRef Name="NutrientConversionFactorId" />
+          </Key>
+          <Property Name="NutrientConversionFactorId" Type="int" Nullable="false" />
+          <Property Name="ProteinValue" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="FatValue" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CarbohydrateValue" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "Shelter.dbo.NutrientConversionFactors" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="NutrientConversionFactors">
+          <Property Name="FoodId" Type="int" />
+          <Property Name="NutrientConversionFactorId" Type="int" />
+        </EntityType>-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "Shelter.dbo.Nutrients" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="Nutrients">
+          <Property Name="FoodId" Type="int" />
+          <Property Name="NutrientId" Type="int" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="Median" Type="int" />
+          <Property Name="DataPoints" Type="int" />
+          <Property Name="Min" Type="int" />
+          <Property Name="Max" Type="int" />
+          <Property Name="FoodNutrientDerivationCode" Type="int" />
+        </EntityType>-->
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TakingAnimal">
+          <Key>
+            <PropertyRef Name="TakingAnimalId" />
+          </Key>
+          <Property Name="TakingAnimalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="AnimalId" Type="int" Nullable="false" />
+          <Property Name="DateOfTaking" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WCFStatus">
+          <Key>
+            <PropertyRef Name="WFCStatusCode" />
+          </Key>
+          <Property Name="WFCStatusCode" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Animal_Breed">
+          <End Role="Breed" Type="Self.Breed" Multiplicity="1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Breed">
+              <PropertyRef Name="BreedId" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="BreedId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Animal_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="GenderCode" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="GenderCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Breed_WCFStatus">
+          <End Role="WCFStatus" Type="Self.WCFStatus" Multiplicity="0..1" />
+          <End Role="Breed" Type="Self.Breed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WCFStatus">
+              <PropertyRef Name="WFCStatusCode" />
+            </Principal>
+            <Dependent Role="Breed">
+              <PropertyRef Name="WFCStatusCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BreedStatistic_Breed">
+          <End Role="Breed" Type="Self.Breed" Multiplicity="1" />
+          <End Role="BreedStatistic" Type="Self.BreedStatistic" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Breed">
+              <PropertyRef Name="BreedId" />
+            </Principal>
+            <Dependent Role="BreedStatistic">
+              <PropertyRef Name="BreedId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Donation_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Donation" Type="Self.Donation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Donation">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Donation_Food">
+          <End Role="Food" Type="Self.Food" Multiplicity="1" />
+          <End Role="Donation" Type="Self.Donation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Food">
+              <PropertyRef Name="FoodId" />
+            </Principal>
+            <Dependent Role="Donation">
+              <PropertyRef Name="FoodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FoodAttributes_Food">
+          <End Role="Food" Type="Self.Food" Multiplicity="1" />
+          <End Role="FoodAttributes" Type="Self.FoodAttributes" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Food">
+              <PropertyRef Name="FoodId" />
+            </Principal>
+            <Dependent Role="FoodAttributes">
+              <PropertyRef Name="FoodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FoodAttributes_FoodAttribute">
+          <End Role="FoodAttribute" Type="Self.FoodAttribute" Multiplicity="1" />
+          <End Role="FoodAttributes" Type="Self.FoodAttributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoodAttribute">
+              <PropertyRef Name="FoodAttributeId" />
+            </Principal>
+            <Dependent Role="FoodAttributes">
+              <PropertyRef Name="FoodAttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FoodNutrientDerivation_FoodNutrientSource">
+          <End Role="FoodNutrientSource" Type="Self.FoodNutrientSource" Multiplicity="0..1" />
+          <End Role="FoodNutrientDerivation" Type="Self.FoodNutrientDerivation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoodNutrientSource">
+              <PropertyRef Name="FoodNutrientSourceId" />
+            </Principal>
+            <Dependent Role="FoodNutrientDerivation">
+              <PropertyRef Name="FoodNutrientSourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FoodPortions_Food">
+          <End Role="Food" Type="Self.Food" Multiplicity="1" />
+          <End Role="FoodPortions" Type="Self.FoodPortions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Food">
+              <PropertyRef Name="FoodId" />
+            </Principal>
+            <Dependent Role="FoodPortions">
+              <PropertyRef Name="FoodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FoodPortions_FoodPortion">
+          <End Role="FoodPortion" Type="Self.FoodPortion" Multiplicity="1" />
+          <End Role="FoodPortions" Type="Self.FoodPortions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoodPortion">
+              <PropertyRef Name="FoodPortionId" />
+            </Principal>
+            <Dependent Role="FoodPortions">
+              <PropertyRef Name="FoodPortionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InputFoods_Food">
+          <End Role="Food" Type="Self.Food" Multiplicity="1" />
+          <End Role="InputFoods" Type="Self.InputFoods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Food">
+              <PropertyRef Name="FoodId" />
+            </Principal>
+            <Dependent Role="InputFoods">
+              <PropertyRef Name="FoodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InputFoods_Food1">
+          <End Role="Food" Type="Self.Food" Multiplicity="1" />
+          <End Role="InputFoods" Type="Self.InputFoods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Food">
+              <PropertyRef Name="FoodId" />
+            </Principal>
+            <Dependent Role="InputFoods">
+              <PropertyRef Name="InputFoodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Ошибки, обнаруженные при создании:
+ошибка 6004: Невозможно найти таблицу "Shelter.dbo.NutrientConversionFactors", на которую ссылается связь.
+        <Association Name="FK_NutrientConversionFactors_Food" />-->
+        <!--Ошибки, обнаруженные при создании:
+ошибка 6004: Невозможно найти таблицу "Shelter.dbo.NutrientConversionFactors", на которую ссылается связь.
+        <Association Name="FK_NutrientConversionFactors_NutrientConversionFactor" />-->
+        <!--Ошибки, обнаруженные при создании:
+ошибка 6004: Невозможно найти таблицу "Shelter.dbo.Nutrients", на которую ссылается связь.
+        <Association Name="FK_Nutrients_Food" />-->
+        <!--Ошибки, обнаруженные при создании:
+ошибка 6004: Невозможно найти таблицу "Shelter.dbo.Nutrients", на которую ссылается связь.
+        <Association Name="FK_Nutrients_FoodNutrientDerivation" />-->
+        <!--Ошибки, обнаруженные при создании:
+ошибка 6004: Невозможно найти таблицу "Shelter.dbo.Nutrients", на которую ссылается связь.
+        <Association Name="FK_Nutrients_Nutrient" />-->
+        <Association Name="FK_TakingAnimal_Animal">
+          <End Role="Animal" Type="Self.Animal" Multiplicity="1" />
+          <End Role="TakingAnimal" Type="Self.TakingAnimal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal">
+              <PropertyRef Name="AnimalId" />
+            </Principal>
+            <Dependent Role="TakingAnimal">
+              <PropertyRef Name="AnimalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TakingAnimal_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="TakingAnimal" Type="Self.TakingAnimal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="TakingAnimal">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ShelterModelContainer">
+          <EntitySet Name="Animal" EntityType="Self.Animal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Breed" EntityType="Self.Breed" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BreedStatistic" EntityType="Self.BreedStatistic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Donation" EntityType="Self.Donation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Food" EntityType="Self.Food" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoodAttribute" EntityType="Self.FoodAttribute" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoodAttributes" EntityType="Self.FoodAttributes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoodNutrientDerivation" EntityType="Self.FoodNutrientDerivation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoodNutrientSource" EntityType="Self.FoodNutrientSource" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoodPortion" EntityType="Self.FoodPortion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nutrient" EntityType="Self.Nutrient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NutrientConversionFactor" EntityType="Self.NutrientConversionFactor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TakingAnimal" EntityType="Self.TakingAnimal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WCFStatus" EntityType="Self.WCFStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoodPortions" EntityType="Self.FoodPortions" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FoodPortions].[FoodId] AS [FoodId], 
+    [FoodPortions].[FoodPortionId] AS [FoodPortionId]
+    FROM [dbo].[FoodPortions] AS [FoodPortions]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="InputFoods" EntityType="Self.InputFoods" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [InputFoods].[FoodId] AS [FoodId], 
+    [InputFoods].[Description] AS [Description], 
+    [InputFoods].[InputFoodId] AS [InputFoodId]
+    FROM [dbo].[InputFoods] AS [InputFoods]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Animal_Breed" Association="Self.FK_Animal_Breed">
+            <End Role="Breed" EntitySet="Breed" />
+            <End Role="Animal" EntitySet="Animal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Animal_Gender" Association="Self.FK_Animal_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Animal" EntitySet="Animal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Breed_WCFStatus" Association="Self.FK_Breed_WCFStatus">
+            <End Role="WCFStatus" EntitySet="WCFStatus" />
+            <End Role="Breed" EntitySet="Breed" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BreedStatistic_Breed" Association="Self.FK_BreedStatistic_Breed">
+            <End Role="Breed" EntitySet="Breed" />
+            <End Role="BreedStatistic" EntitySet="BreedStatistic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Country" Association="Self.FK_Client_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donation_Client" Association="Self.FK_Donation_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Donation" EntitySet="Donation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donation_Food" Association="Self.FK_Donation_Food">
+            <End Role="Food" EntitySet="Food" />
+            <End Role="Donation" EntitySet="Donation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FoodAttributes_Food" Association="Self.FK_FoodAttributes_Food">
+            <End Role="Food" EntitySet="Food" />
+            <End Role="FoodAttributes" EntitySet="FoodAttributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FoodAttributes_FoodAttribute" Association="Self.FK_FoodAttributes_FoodAttribute">
+            <End Role="FoodAttribute" EntitySet="FoodAttribute" />
+            <End Role="FoodAttributes" EntitySet="FoodAttributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FoodNutrientDerivation_FoodNutrientSource" Association="Self.FK_FoodNutrientDerivation_FoodNutrientSource">
+            <End Role="FoodNutrientSource" EntitySet="FoodNutrientSource" />
+            <End Role="FoodNutrientDerivation" EntitySet="FoodNutrientDerivation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FoodPortions_Food" Association="Self.FK_FoodPortions_Food">
+            <End Role="Food" EntitySet="Food" />
+            <End Role="FoodPortions" EntitySet="FoodPortions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FoodPortions_FoodPortion" Association="Self.FK_FoodPortions_FoodPortion">
+            <End Role="FoodPortion" EntitySet="FoodPortion" />
+            <End Role="FoodPortions" EntitySet="FoodPortions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InputFoods_Food" Association="Self.FK_InputFoods_Food">
+            <End Role="Food" EntitySet="Food" />
+            <End Role="InputFoods" EntitySet="InputFoods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InputFoods_Food1" Association="Self.FK_InputFoods_Food1">
+            <End Role="Food" EntitySet="Food" />
+            <End Role="InputFoods" EntitySet="InputFoods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TakingAnimal_Animal" Association="Self.FK_TakingAnimal_Animal">
+            <End Role="Animal" EntitySet="Animal" />
+            <End Role="TakingAnimal" EntitySet="TakingAnimal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TakingAnimal_Client" Association="Self.FK_TakingAnimal_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="TakingAnimal" EntitySet="TakingAnimal" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ShelterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Animal">
+          <Key>
+            <PropertyRef Name="AnimalId" />
+          </Key>
+          <Property Name="AnimalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GenderCode" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOfArrival" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BreedId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Breed" Relationship="Self.FK_Animal_Breed" FromRole="Animal" ToRole="Breed" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_Animal_Gender" FromRole="Animal" ToRole="Gender" />
+          <NavigationProperty Name="TakingAnimal" Relationship="Self.FK_TakingAnimal_Animal" FromRole="Animal" ToRole="TakingAnimal" />
+        </EntityType>
+        <EntityType Name="Breed">
+          <Key>
+            <PropertyRef Name="BreedId" />
+          </Key>
+          <Property Name="BreedId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Synonym" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="WFCStatusCode" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="Group" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Section" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EnglishName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Variety" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StandartFCI" Type="Int32" />
+          <Property Name="RCF" Type="Int32" />
+          <Property Name="URLPhoto" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="URLWiki" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="YearOfRecognitionFCI" Type="Int32" />
+          <NavigationProperty Name="Animal" Relationship="Self.FK_Animal_Breed" FromRole="Breed" ToRole="Animal" />
+          <NavigationProperty Name="WCFStatus" Relationship="Self.FK_Breed_WCFStatus" FromRole="Breed" ToRole="WCFStatus" />
+          <NavigationProperty Name="BreedStatistic" Relationship="Self.FK_BreedStatistic_Breed" FromRole="Breed" ToRole="BreedStatistic" />
+        </EntityType>
+        <EntityType Name="BreedStatistic">
+          <Key>
+            <PropertyRef Name="BreedId" />
+          </Key>
+          <Property Name="BreedId" Type="Int32" Nullable="false" />
+          <Property Name="Temperament" Type="Byte" Nullable="false" />
+          <Property Name="Activity" Type="Byte" Nullable="false" />
+          <Property Name="Training" Type="Byte" Nullable="false" />
+          <Property Name="Longevity" Type="Byte" Nullable="false" />
+          <Property Name="Height" Type="Byte" Nullable="false" />
+          <Property Name="Care" Type="Byte" Nullable="false" />
+          <Property Name="Children" Type="Byte" Nullable="false" />
+          <Property Name="Apartment" Type="Byte" Nullable="false" />
+          <Property Name="Guard" Type="Byte" Nullable="false" />
+          <Property Name="Moult" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Breed" Relationship="Self.FK_BreedStatistic_Breed" FromRole="BreedStatistic" ToRole="Breed" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PostalZip" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Region" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CountryId" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Phone2" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="OtherContactInfo" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Serial" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="Number" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="IssuedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfIssue" Type="DateTime" Precision="3" />
+          <Property Name="RegistrationAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Client_Country" FromRole="Client" ToRole="Country" />
+          <NavigationProperty Name="Donation" Relationship="Self.FK_Donation_Client" FromRole="Client" ToRole="Donation" />
+          <NavigationProperty Name="TakingAnimal" Relationship="Self.FK_TakingAnimal_Client" FromRole="Client" ToRole="TakingAnimal" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Client_Country" FromRole="Country" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Donation">
+          <Key>
+            <PropertyRef Name="DonationId" />
+          </Key>
+          <Property Name="DonationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateOfDonation" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="FoodId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Donation_Client" FromRole="Donation" ToRole="Client" />
+          <NavigationProperty Name="Food" Relationship="Self.FK_Donation_Food" FromRole="Donation" ToRole="Food" />
+        </EntityType>
+        <EntityType Name="Food">
+          <Key>
+            <PropertyRef Name="FoodId" />
+          </Key>
+          <Property Name="FoodId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="FoodClass" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsHistoricalReference" Type="Boolean" />
+          <Property Name="NdbNumber" Type="Int32" />
+          <Property Name="FoodCategory" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FdcId" Type="Int32" />
+          <Property Name="PublicationDate" Type="DateTime" Precision="3" />
+          <Property Name="Scientificname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Donation" Relationship="Self.FK_Donation_Food" FromRole="Food" ToRole="Donation" />
+          <NavigationProperty Name="InputFoods" Relationship="Self.FK_InputFoods_Food" FromRole="Food" ToRole="InputFoods" />
+          <NavigationProperty Name="InputFoods1" Relationship="Self.FK_InputFoods_Food1" FromRole="Food" ToRole="InputFoods" />
+          <NavigationProperty Name="FoodAttribute" Relationship="Self.FoodAttributes" FromRole="Food" ToRole="FoodAttribute" />
+          <NavigationProperty Name="FoodPortion" Relationship="Self.FoodPortions" FromRole="Food" ToRole="FoodPortion" />
+        </EntityType>
+        <EntityType Name="FoodAttribute">
+          <Key>
+            <PropertyRef Name="FoodAttributeId" />
+          </Key>
+          <Property Name="FoodAttributeId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Food" Relationship="Self.FoodAttributes" FromRole="FoodAttribute" ToRole="Food" />
+        </EntityType>
+        <EntityType Name="FoodNutrientDerivation">
+          <Key>
+            <PropertyRef Name="FoodNutrientDerivationCode" />
+          </Key>
+          <Property Name="FoodNutrientDerivationCode" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="FoodNutrientSourceId" Type="Int32" />
+          <NavigationProperty Name="FoodNutrientSource" Relationship="Self.FK_FoodNutrientDerivation_FoodNutrientSource" FromRole="FoodNutrientDerivation" ToRole="FoodNutrientSource" />
+        </EntityType>
+        <EntityType Name="FoodNutrientSource">
+          <Key>
+            <PropertyRef Name="FoodNutrientSourceId" />
+          </Key>
+          <Property Name="FoodNutrientSourceId" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FoodNutrientDerivation" Relationship="Self.FK_FoodNutrientDerivation_FoodNutrientSource" FromRole="FoodNutrientSource" ToRole="FoodNutrientDerivation" />
+        </EntityType>
+        <EntityType Name="FoodPortion">
+          <Key>
+            <PropertyRef Name="FoodPortionId" />
+          </Key>
+          <Property Name="FoodPortionId" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="Int32" />
+          <Property Name="MeasureUnitName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MeasureUnitAbbreviation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Modifier" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GramWeight" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SequenceNumber" Type="Int32" />
+          <Property Name="MinYearAcquired" Type="Int32" />
+          <Property Name="Amount" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Food" Relationship="Self.FoodPortions" FromRole="FoodPortion" ToRole="Food" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="GenderCode" />
+          </Key>
+          <Property Name="GenderCode" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Animal" Relationship="Self.FK_Animal_Gender" FromRole="Gender" ToRole="Animal" />
+        </EntityType>
+        <EntityType Name="Nutrient">
+          <Key>
+            <PropertyRef Name="NutrientId" />
+          </Key>
+          <Property Name="NutrientId" Type="Int32" Nullable="false" />
+          <Property Name="Number" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Rank" Type="Int32" />
+          <Property Name="UnitName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="NutrientConversionFactor">
+          <Key>
+            <PropertyRef Name="NutrientConversionFactorId" />
+          </Key>
+          <Property Name="NutrientConversionFactorId" Type="Int32" Nullable="false" />
+          <Property Name="ProteinValue" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FatValue" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CarbohydrateValue" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TakingAnimal">
+          <Key>
+            <PropertyRef Name="TakingAnimalId" />
+          </Key>
+          <Property Name="TakingAnimalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="AnimalId" Type="Int32" Nullable="false" />
+          <Property Name="DateOfTaking" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Animal" Relationship="Self.FK_TakingAnimal_Animal" FromRole="TakingAnimal" ToRole="Animal" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_TakingAnimal_Client" FromRole="TakingAnimal" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="WCFStatus">
+          <Key>
+            <PropertyRef Name="WFCStatusCode" />
+          </Key>
+          <Property Name="WFCStatusCode" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Breed" Relationship="Self.FK_Breed_WCFStatus" FromRole="WCFStatus" ToRole="Breed" />
+        </EntityType>
+        <EntityType Name="InputFoods">
+          <Key>
+            <PropertyRef Name="FoodId" />
+            <PropertyRef Name="InputFoodId" />
+          </Key>
+          <Property Name="FoodId" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="InputFoodId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Food" Relationship="Self.FK_InputFoods_Food" FromRole="InputFoods" ToRole="Food" />
+          <NavigationProperty Name="Food1" Relationship="Self.FK_InputFoods_Food1" FromRole="InputFoods" ToRole="Food" />
+        </EntityType>
+        <Association Name="FK_Animal_Breed">
+          <End Role="Breed" Type="Self.Breed" Multiplicity="1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Breed">
+              <PropertyRef Name="BreedId" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="BreedId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Animal_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="GenderCode" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="GenderCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TakingAnimal_Animal">
+          <End Role="Animal" Type="Self.Animal" Multiplicity="1" />
+          <End Role="TakingAnimal" Type="Self.TakingAnimal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal">
+              <PropertyRef Name="AnimalId" />
+            </Principal>
+            <Dependent Role="TakingAnimal">
+              <PropertyRef Name="AnimalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Breed_WCFStatus">
+          <End Role="WCFStatus" Type="Self.WCFStatus" Multiplicity="0..1" />
+          <End Role="Breed" Type="Self.Breed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WCFStatus">
+              <PropertyRef Name="WFCStatusCode" />
+            </Principal>
+            <Dependent Role="Breed">
+              <PropertyRef Name="WFCStatusCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BreedStatistic_Breed">
+          <End Role="Breed" Type="Self.Breed" Multiplicity="1" />
+          <End Role="BreedStatistic" Type="Self.BreedStatistic" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Breed">
+              <PropertyRef Name="BreedId" />
+            </Principal>
+            <Dependent Role="BreedStatistic">
+              <PropertyRef Name="BreedId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Donation_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Donation" Type="Self.Donation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Donation">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TakingAnimal_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="TakingAnimal" Type="Self.TakingAnimal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="TakingAnimal">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Donation_Food">
+          <End Role="Food" Type="Self.Food" Multiplicity="1" />
+          <End Role="Donation" Type="Self.Donation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Food">
+              <PropertyRef Name="FoodId" />
+            </Principal>
+            <Dependent Role="Donation">
+              <PropertyRef Name="FoodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InputFoods_Food">
+          <End Role="Food" Type="Self.Food" Multiplicity="1" />
+          <End Role="InputFoods" Type="Self.InputFoods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Food">
+              <PropertyRef Name="FoodId" />
+            </Principal>
+            <Dependent Role="InputFoods">
+              <PropertyRef Name="FoodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InputFoods_Food1">
+          <End Role="Food" Type="Self.Food" Multiplicity="1" />
+          <End Role="InputFoods" Type="Self.InputFoods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Food">
+              <PropertyRef Name="FoodId" />
+            </Principal>
+            <Dependent Role="InputFoods">
+              <PropertyRef Name="InputFoodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FoodNutrientDerivation_FoodNutrientSource">
+          <End Role="FoodNutrientSource" Type="Self.FoodNutrientSource" Multiplicity="0..1" />
+          <End Role="FoodNutrientDerivation" Type="Self.FoodNutrientDerivation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoodNutrientSource">
+              <PropertyRef Name="FoodNutrientSourceId" />
+            </Principal>
+            <Dependent Role="FoodNutrientDerivation">
+              <PropertyRef Name="FoodNutrientSourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FoodAttributes">
+          <End Role="Food" Type="Self.Food" Multiplicity="*" />
+          <End Role="FoodAttribute" Type="Self.FoodAttribute" Multiplicity="0..1" />
+        </Association>
+        <Association Name="FoodPortions">
+          <End Role="Food" Type="Self.Food" Multiplicity="*" />
+          <End Role="FoodPortion" Type="Self.FoodPortion" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="ShelterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Animal" EntityType="Self.Animal" />
+          <EntitySet Name="Breed" EntityType="Self.Breed" />
+          <EntitySet Name="BreedStatistic" EntityType="Self.BreedStatistic" />
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="Country" EntityType="Self.Country" />
+          <EntitySet Name="Donation" EntityType="Self.Donation" />
+          <EntitySet Name="Food" EntityType="Self.Food" />
+          <EntitySet Name="FoodAttribute" EntityType="Self.FoodAttribute" />
+          <EntitySet Name="FoodNutrientDerivation" EntityType="Self.FoodNutrientDerivation" />
+          <EntitySet Name="FoodNutrientSource" EntityType="Self.FoodNutrientSource" />
+          <EntitySet Name="FoodPortion" EntityType="Self.FoodPortion" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" />
+          <EntitySet Name="Nutrient" EntityType="Self.Nutrient" />
+          <EntitySet Name="NutrientConversionFactor" EntityType="Self.NutrientConversionFactor" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TakingAnimal" EntityType="Self.TakingAnimal" />
+          <EntitySet Name="WCFStatus" EntityType="Self.WCFStatus" />
+          <EntitySet Name="InputFoods" EntityType="Self.InputFoods" />
+          <AssociationSet Name="FK_Animal_Breed" Association="Self.FK_Animal_Breed">
+            <End Role="Breed" EntitySet="Breed" />
+            <End Role="Animal" EntitySet="Animal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Animal_Gender" Association="Self.FK_Animal_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Animal" EntitySet="Animal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TakingAnimal_Animal" Association="Self.FK_TakingAnimal_Animal">
+            <End Role="Animal" EntitySet="Animal" />
+            <End Role="TakingAnimal" EntitySet="TakingAnimal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Breed_WCFStatus" Association="Self.FK_Breed_WCFStatus">
+            <End Role="WCFStatus" EntitySet="WCFStatus" />
+            <End Role="Breed" EntitySet="Breed" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BreedStatistic_Breed" Association="Self.FK_BreedStatistic_Breed">
+            <End Role="Breed" EntitySet="Breed" />
+            <End Role="BreedStatistic" EntitySet="BreedStatistic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Country" Association="Self.FK_Client_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donation_Client" Association="Self.FK_Donation_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Donation" EntitySet="Donation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TakingAnimal_Client" Association="Self.FK_TakingAnimal_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="TakingAnimal" EntitySet="TakingAnimal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donation_Food" Association="Self.FK_Donation_Food">
+            <End Role="Food" EntitySet="Food" />
+            <End Role="Donation" EntitySet="Donation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InputFoods_Food" Association="Self.FK_InputFoods_Food">
+            <End Role="Food" EntitySet="Food" />
+            <End Role="InputFoods" EntitySet="InputFoods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InputFoods_Food1" Association="Self.FK_InputFoods_Food1">
+            <End Role="Food" EntitySet="Food" />
+            <End Role="InputFoods" EntitySet="InputFoods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FoodNutrientDerivation_FoodNutrientSource" Association="Self.FK_FoodNutrientDerivation_FoodNutrientSource">
+            <End Role="FoodNutrientSource" EntitySet="FoodNutrientSource" />
+            <End Role="FoodNutrientDerivation" EntitySet="FoodNutrientDerivation" />
+          </AssociationSet>
+          <AssociationSet Name="FoodAttributes" Association="Self.FoodAttributes">
+            <End Role="Food" EntitySet="Food" />
+            <End Role="FoodAttribute" EntitySet="FoodAttribute" />
+          </AssociationSet>
+          <AssociationSet Name="FoodPortions" Association="Self.FoodPortions">
+            <End Role="Food" EntitySet="Food" />
+            <End Role="FoodPortion" EntitySet="FoodPortion" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ShelterModelContainer" CdmEntityContainer="ShelterEntities">
+          <EntitySetMapping Name="Animal">
+            <EntityTypeMapping TypeName="ShelterModel.Animal">
+              <MappingFragment StoreEntitySet="Animal">
+                <ScalarProperty Name="AnimalId" ColumnName="AnimalId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GenderCode" ColumnName="GenderCode" />
+                <ScalarProperty Name="DateOfArrival" ColumnName="DateOfArrival" />
+                <ScalarProperty Name="BreedId" ColumnName="BreedId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Breed">
+            <EntityTypeMapping TypeName="ShelterModel.Breed">
+              <MappingFragment StoreEntitySet="Breed">
+                <ScalarProperty Name="BreedId" ColumnName="BreedId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Synonym" ColumnName="Synonym" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="WFCStatusCode" ColumnName="WFCStatusCode" />
+                <ScalarProperty Name="Group" ColumnName="Group" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+                <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+                <ScalarProperty Name="Variety" ColumnName="Variety" />
+                <ScalarProperty Name="StandartFCI" ColumnName="StandartFCI" />
+                <ScalarProperty Name="RCF" ColumnName="RCF" />
+                <ScalarProperty Name="URLPhoto" ColumnName="URLPhoto" />
+                <ScalarProperty Name="URLWiki" ColumnName="URLWiki" />
+                <ScalarProperty Name="YearOfRecognitionFCI" ColumnName="YearOfRecognitionFCI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BreedStatistic">
+            <EntityTypeMapping TypeName="ShelterModel.BreedStatistic">
+              <MappingFragment StoreEntitySet="BreedStatistic">
+                <ScalarProperty Name="BreedId" ColumnName="BreedId" />
+                <ScalarProperty Name="Temperament" ColumnName="Temperament" />
+                <ScalarProperty Name="Activity" ColumnName="Activity" />
+                <ScalarProperty Name="Training" ColumnName="Training" />
+                <ScalarProperty Name="Longevity" ColumnName="Longevity" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Care" ColumnName="Care" />
+                <ScalarProperty Name="Children" ColumnName="Children" />
+                <ScalarProperty Name="Apartment" ColumnName="Apartment" />
+                <ScalarProperty Name="Guard" ColumnName="Guard" />
+                <ScalarProperty Name="Moult" ColumnName="Moult" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="ShelterModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PostalZip" ColumnName="PostalZip" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="OtherContactInfo" ColumnName="OtherContactInfo" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="IssuedBy" ColumnName="IssuedBy" />
+                <ScalarProperty Name="DateOfIssue" ColumnName="DateOfIssue" />
+                <ScalarProperty Name="RegistrationAddress" ColumnName="RegistrationAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country">
+            <EntityTypeMapping TypeName="ShelterModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Donation">
+            <EntityTypeMapping TypeName="ShelterModel.Donation">
+              <MappingFragment StoreEntitySet="Donation">
+                <ScalarProperty Name="DonationId" ColumnName="DonationId" />
+                <ScalarProperty Name="DateOfDonation" ColumnName="DateOfDonation" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="FoodId" ColumnName="FoodId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Food">
+            <EntityTypeMapping TypeName="ShelterModel.Food">
+              <MappingFragment StoreEntitySet="Food">
+                <ScalarProperty Name="FoodId" ColumnName="FoodId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="FoodClass" ColumnName="FoodClass" />
+                <ScalarProperty Name="IsHistoricalReference" ColumnName="IsHistoricalReference" />
+                <ScalarProperty Name="NdbNumber" ColumnName="NdbNumber" />
+                <ScalarProperty Name="FoodCategory" ColumnName="FoodCategory" />
+                <ScalarProperty Name="FdcId" ColumnName="FdcId" />
+                <ScalarProperty Name="PublicationDate" ColumnName="PublicationDate" />
+                <ScalarProperty Name="Scientificname" ColumnName="Scientificname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodAttribute">
+            <EntityTypeMapping TypeName="ShelterModel.FoodAttribute">
+              <MappingFragment StoreEntitySet="FoodAttribute">
+                <ScalarProperty Name="FoodAttributeId" ColumnName="FoodAttributeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodNutrientDerivation">
+            <EntityTypeMapping TypeName="ShelterModel.FoodNutrientDerivation">
+              <MappingFragment StoreEntitySet="FoodNutrientDerivation">
+                <ScalarProperty Name="FoodNutrientDerivationCode" ColumnName="FoodNutrientDerivationCode" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FoodNutrientSourceId" ColumnName="FoodNutrientSourceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodNutrientSource">
+            <EntityTypeMapping TypeName="ShelterModel.FoodNutrientSource">
+              <MappingFragment StoreEntitySet="FoodNutrientSource">
+                <ScalarProperty Name="FoodNutrientSourceId" ColumnName="FoodNutrientSourceId" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodPortion">
+            <EntityTypeMapping TypeName="ShelterModel.FoodPortion">
+              <MappingFragment StoreEntitySet="FoodPortion">
+                <ScalarProperty Name="FoodPortionId" ColumnName="FoodPortionId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="MeasureUnitName" ColumnName="MeasureUnitName" />
+                <ScalarProperty Name="MeasureUnitAbbreviation" ColumnName="MeasureUnitAbbreviation" />
+                <ScalarProperty Name="Modifier" ColumnName="Modifier" />
+                <ScalarProperty Name="GramWeight" ColumnName="GramWeight" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="MinYearAcquired" ColumnName="MinYearAcquired" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="ShelterModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="GenderCode" ColumnName="GenderCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nutrient">
+            <EntityTypeMapping TypeName="ShelterModel.Nutrient">
+              <MappingFragment StoreEntitySet="Nutrient">
+                <ScalarProperty Name="NutrientId" ColumnName="NutrientId" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Rank" ColumnName="Rank" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NutrientConversionFactor">
+            <EntityTypeMapping TypeName="ShelterModel.NutrientConversionFactor">
+              <MappingFragment StoreEntitySet="NutrientConversionFactor">
+                <ScalarProperty Name="NutrientConversionFactorId" ColumnName="NutrientConversionFactorId" />
+                <ScalarProperty Name="ProteinValue" ColumnName="ProteinValue" />
+                <ScalarProperty Name="FatValue" ColumnName="FatValue" />
+                <ScalarProperty Name="CarbohydrateValue" ColumnName="CarbohydrateValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ShelterModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TakingAnimal">
+            <EntityTypeMapping TypeName="ShelterModel.TakingAnimal">
+              <MappingFragment StoreEntitySet="TakingAnimal">
+                <ScalarProperty Name="TakingAnimalId" ColumnName="TakingAnimalId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="AnimalId" ColumnName="AnimalId" />
+                <ScalarProperty Name="DateOfTaking" ColumnName="DateOfTaking" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WCFStatus">
+            <EntityTypeMapping TypeName="ShelterModel.WCFStatus">
+              <MappingFragment StoreEntitySet="WCFStatus">
+                <ScalarProperty Name="WFCStatusCode" ColumnName="WFCStatusCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InputFoods">
+            <EntityTypeMapping TypeName="ShelterModel.InputFoods">
+              <MappingFragment StoreEntitySet="InputFoods">
+                <ScalarProperty Name="FoodId" ColumnName="FoodId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="InputFoodId" ColumnName="InputFoodId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FoodAttributes" TypeName="ShelterModel.FoodAttributes" StoreEntitySet="FoodAttributes">
+            <EndProperty Name="Food">
+              <ScalarProperty Name="FoodId" ColumnName="FoodId" />
+            </EndProperty>
+            <EndProperty Name="FoodAttribute">
+              <ScalarProperty Name="FoodAttributeId" ColumnName="FoodAttributeId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FoodPortions" TypeName="ShelterModel.FoodPortions" StoreEntitySet="FoodPortions">
+            <EndProperty Name="Food">
+              <ScalarProperty Name="FoodId" ColumnName="FoodId" />
+            </EndProperty>
+            <EndProperty Name="FoodPortion">
+              <ScalarProperty Name="FoodPortionId" ColumnName="FoodPortionId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
