@@ -10,14 +10,10 @@
 namespace Shelter.Database
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Nutrient
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public int NutrientId { get; set; }
-        public Nullable<int> Number { get; set; }
-        public string Name { get; set; }
-        public Nullable<int> Rank { get; set; }
-        public string UnitName { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

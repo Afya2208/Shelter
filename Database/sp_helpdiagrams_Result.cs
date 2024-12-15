@@ -10,13 +10,13 @@
 namespace Shelter.Database
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class NutrientConversionFactor
+    public partial class sp_helpdiagrams_Result
     {
-        public int NutrientConversionFactorId { get; set; }
-        public Nullable<decimal> ProteinValue { get; set; }
-        public Nullable<decimal> FatValue { get; set; }
-        public Nullable<decimal> CarbohydrateValue { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

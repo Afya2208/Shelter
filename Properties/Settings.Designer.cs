@@ -23,20 +23,26 @@ namespace Shelter.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public global::System.DateTime EnablingTime {
             get {
                 return ((global::System.DateTime)(this["EnablingTime"]));
             }
+            set {
+                this["EnablingTime"] = value;
+            }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        public string AuthorizedUser {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int AuthorizedClientId {
             get {
-                return ((string)(this["AuthorizedUser"]));
+                return ((int)(this["AuthorizedClientId"]));
+            }
+            set {
+                this["AuthorizedClientId"] = value;
             }
         }
     }

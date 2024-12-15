@@ -4,7 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Shelter"
+        Closed="Window_Closed"
+        KeyUp="Window_KeyUp"
+        MouseMove="Window_MouseMove"
         
+        MouseDown="Window_MouseDown"
+        KeyDown="Window_KeyDown"
         mc:Ignorable="d"
         
         Icon="\Resources\иконка приложения.png"
@@ -14,10 +19,26 @@
             <RowDefinition Height="80"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
+        <Button HorizontalAlignment="Left" Height="20" Width="70" Margin="80,0,0,0" x:Name="ClientBt" Click="ClientBt_Click">Клиенты</Button>
         <Image HorizontalAlignment="Left" Source="\Resources\логотип приложения.png"></Image>
         <Button x:Name="LoginBt" Click="LoginBt_Click" HorizontalAlignment="Right" Width="60" Height="60" Background="Transparent" BorderBrush="Transparent">
-            <Image Source="\Resources\login.png"></Image>
+            <Image Width="60" Height="60" Source="\Resources\login.png"></Image>
         </Button>
+        <Button Visibility="Collapsed" Click="LogoutBt_Click" x:Name="LogoutBt" HorizontalAlignment="Right" Width="60" Height="60" Background="Transparent" BorderBrush="Transparent">
+            <Image Width="60" Height="60"  Source="\Resources\exit.png"></Image>
+        </Button>
+        <Button Content="Назад" IsCancel="True" Name="BackBt" Click="BackBt_Click" Visibility="Collapsed">
+            
+        </Button>
+        <Button Grid.Row="1" Visibility="Visible" x:Name="NotificationBt" Click="NotificationBt_Click" Width="60" Height="60" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Image Width="60" Height="60"  Source="\Resources\иконка уведомлений.png"></Image>
+        </Button>
+        <Border CornerRadius="44" Background="Red" Grid.Row="1" Margin="0,0,0,45" BorderBrush="#FFB50000" Name="NotificationsNumber" Visibility="Visible" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <TextBlock Name="NNumber" Width="20" TextAlignment="Center" Height="20" Foreground="White">
+                
+            </TextBlock>
+        </Border>
+       
         <Frame ContentRendered="MainFrame_ContentRendered" Grid.Row="1" NavigationUIVisibility="Hidden" Name="MainFrame">
             
         </Frame>

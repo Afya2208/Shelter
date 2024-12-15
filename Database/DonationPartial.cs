@@ -15,5 +15,16 @@ namespace Shelter.Database
                 return Food.Price * Amount;
             }
         }
+        public Donation()
+        {
+
+        }
+        public Donation(DonationShort @short)
+        {
+            DateOfDonation = @short.DateOfDonation;
+            ClientId = @short.ClientId;
+            Amount = @short.Amount;
+            FoodId = @short.FoodId;
+        }
     }
 }

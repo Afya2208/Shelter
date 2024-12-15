@@ -8,19 +8,51 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="GoHomePage">
 
-    <Grid>
-        <StackPanel HorizontalAlignment="Center">
-            <TextBlock HorizontalAlignment="Center">Заполнение договора на передачу животного из приюта новому хозяину</TextBlock>
-            <TextBlock>4.2. НОВЫЙ ВЛАДЕЛЕЦ:</TextBlock>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock VerticalAlignment="Center">ФИО</TextBlock>
-                <TextBox x:Name="NameBox"></TextBox>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock>ФИО</TextBlock>
-                <TextBox x:Name="NamddeBox"></TextBox>
-            </StackPanel>
+    <StackPanel>
+        <TextBlock>Заполнение договора на нового владельца</TextBlock>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock VerticalAlignment="Center">ФИО</TextBlock>
+            <TextBox  MaxLength="302" x:Name="NameBox" Width="750"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock VerticalAlignment="Center">Адрес регистрации:</TextBlock>
+            <TextBox  MaxLength="100" x:Name="RegistrationBox" Width="670"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock VerticalAlignment="Center">Фактический адрес:</TextBlock>
+            <TextBox  MaxLength="100" x:Name="ResidentalBox" Width="670"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock VerticalAlignment="Center">Паспортные данные:</TextBlock>
+            <TextBlock Margin="5,0,0,0" VerticalAlignment="Center">серия</TextBlock>
+            <TextBox  MaxLength="4" x:Name="SerialBox"></TextBox>
+            <TextBlock VerticalAlignment="Center">№</TextBlock>
+            <TextBox  MaxLength="6" x:Name="NumberBox"></TextBox>
 
         </StackPanel>
-    </Grid>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock VerticalAlignment="Center">Выдан(выдавший огран):</TextBlock>
+            <TextBox  MaxLength="100" x:Name="IssuedByBox" Width="410"></TextBox>
+            <TextBlock VerticalAlignment="Center">Дата выдачи:</TextBlock>
+            <TextBox  MaxLength="10" x:Name="DateOfIssueBox"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock VerticalAlignment="Center">Тел №1:</TextBlock>
+            <TextBox MaxLength="15" x:Name="PhoneBox" Width="350"></TextBox>
+            <TextBlock VerticalAlignment="Center">Тел №2:</TextBlock>
+            <TextBox  MaxLength="15" x:Name="Phone2Box" Width="330"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock VerticalAlignment="Center">E-mail:</TextBlock>
+            <TextBox  MaxLength="100" Width="743" x:Name="EmailBox"></TextBox>
+
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock VerticalAlignment="Center">Другая контактная информация:</TextBlock>
+            <TextBox MaxLength="300" x:Name="OtherInfoBox" TextWrapping="Wrap" Width="600"></TextBox>
+
+        </StackPanel>
+        <Button x:Name="PrintBt" Click="PrintBt_Click" Margin="5" HorizontalAlignment="Left" Width="150">Печать договора</Button>
+        <Button x:Name="CancelBt" Click="CancelBt_Click"  Margin="5" HorizontalAlignment="Left" Width="150">Отмена</Button>
+    </StackPanel>
 </Page>

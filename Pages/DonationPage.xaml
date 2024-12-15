@@ -24,6 +24,22 @@
             </StackPanel>
             
             <TextBlock x:Name="TotalBlock" HorizontalAlignment="Center">Итого:</TextBlock>
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource Blocks}" VerticalAlignment="Center">Номер карты:</TextBlock>
+                    <TextBox MaxLength="16" x:Name="NumberCardBox"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource Blocks}" VerticalAlignment="Center">Месяц:</TextBlock>
+                    <TextBox Width="50" MaxLength="2" x:Name="MonthCardBox"></TextBox>
+                    <TextBlock Width="70" Style="{StaticResource Blocks}" VerticalAlignment="Center">Год:</TextBlock>
+                    <TextBox Width="50" MaxLength="4" x:Name="YearCardBox"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource Blocks}" VerticalAlignment="Center">CVC:</TextBlock>
+                    <TextBox Width="50" MaxLength="3" x:Name="CVCCardBox"></TextBox>
+                </StackPanel>
+            </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="PayBt" Click="PayBt_Click" IsDefault="True">Оплатить</Button>
                  <Button x:Name="CancelBt" Click="CancelBt_Click" IsCancel="True">Отмена</Button>

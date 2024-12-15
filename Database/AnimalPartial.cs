@@ -15,6 +15,7 @@ namespace Shelter.Database
                 return (DateTime.Today - DateOfArrival).Days;
             }
         }
+        
         public string Color
         {
             get

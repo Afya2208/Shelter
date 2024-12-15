@@ -1,0 +1,21 @@
+﻿<Page x:Class="Shelter.Pages.ThankPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Shelter.Pages"
+      mc:Ignorable="d" 
+      
+      d:DesignHeight="520" d:DesignWidth="730"
+      Title="ThankPage">
+    <StackPanel>
+        <Canvas MaxHeight="450" MinHeight="450" x:Name="Sert"
+MaxWidth="630" MinWidth="630">
+            <Image Source="\Resources\серт.png"></Image>
+            <TextBlock Name="NameBlock" FontWeight="Black" FontSize="16" TextAlignment="Center" Width="380" Canvas.Left="210" Canvas.Top="265"></TextBlock>
+            <TextBlock Name="SumBlock" FontWeight="Black" Width="93" FontSize="16" TextAlignment="Center" Canvas.Left="433" Canvas.Top="178"></TextBlock>
+        </Canvas>
+        <Button Click="Button_Click">Печать</Button>
+    </StackPanel>
+    
+</Page>
